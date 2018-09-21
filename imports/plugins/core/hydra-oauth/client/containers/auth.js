@@ -10,7 +10,6 @@ import { LoginFormValidation } from "/lib/api";
 class OAuthFormContainer extends Component {
   static propTypes = {
     currentRoute: PropTypes.object,
-    currentView: PropTypes.string,
     formMessages: PropTypes.object
   }
 
@@ -24,6 +23,7 @@ class OAuthFormContainer extends Component {
   }
 
   handleFormSubmit = (event, email, password) => {
+    const currentRouteView = this.props.currentRoute.query.action;
     event.preventDefault();
 
     this.setState({
@@ -55,7 +55,7 @@ class OAuthFormContainer extends Component {
       return;
     }
 
-    if (this.props.currentView === "loginFormSignInView") {
+    if (currentRouteView === "signin") {
       Meteor.loginWithPassword(username, pword, (error) => {
         if (error) {
           this.setState({
@@ -70,7 +70,7 @@ class OAuthFormContainer extends Component {
           });
         }
       });
-    } else if (this.props.currentView === "loginFormSignUpView") {
+    } else {
       const newUserData = {
         email: username,
         password: pword
