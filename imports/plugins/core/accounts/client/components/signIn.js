@@ -173,19 +173,19 @@ class SignIn extends Component {
             {this.renderSpinnerOnWait()}
           </div>
 
-          {this.props.hasSwitchLinks &&
-            <div className="form-group flex flex-justify-spaceBetween">
-              <Components.Button
-                tagName="span"
-                className={{
-                  "btn": false,
-                  "btn-default": false
-                }}
-                label="Reset Password"
-                i18nKeyLabel="accountsUI.forgotPassword"
-                data-event-category="accounts"
-                onClick={this.props.onForgotPasswordClick}
-              />
+          <div className="form-group flex flex-justify-spaceBetween">
+            <Components.Button
+              tagName="span"
+              className={{
+                "btn": false,
+                "btn-default": false
+              }}
+              label="Reset Password"
+              i18nKeyLabel="accountsUI.forgotPassword"
+              data-event-category="accounts"
+              onClick={this.props.onForgotPasswordClick}
+            />
+            {this.props.hasSwitchLinks &&
               <Components.Button
                 tagName="span"
                 className={{
@@ -197,8 +197,8 @@ class SignIn extends Component {
                 data-event-category="accounts"
                 onClick={this.props.onSignUpClick}
               />
-            </div>
-          }
+            }
+          </div>
         </form>
       </div>
     );
