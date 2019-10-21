@@ -1,0 +1,61 @@
+"Represents a single category"
+type Category implements Node & Deletable {
+  "The category ID"
+  _id: ID!
+
+  "The date and time at which this category was created"
+  createdAt: DateTime!
+
+  "A string of the title to be displayed on a Category Listing Page"
+  displayTitle: String
+
+  "A list of the IDs of top products in this category"
+  featuredProductIds: [ID]
+
+  "A string containing the hero image url for a Category Listing Page"
+  heroMediaUrl: String
+
+  """
+  If `true`, this object should be considered deleted. Soft deleted objects are not
+  returned in query results unless you explicitly ask for them.
+  """
+  isDeleted: Boolean!
+
+  "If `true`, this category should be shown at the top level of the category hierarchy"
+  isTopLevel: Boolean!
+
+  "If `true`, this category's Category Listing Page should be visible to the public"
+  isVisible: Boolean!
+
+  "Arbitrary additional metadata about this category"
+  metafields: [Metafield]
+
+  "The display name for the category. This is unique within a given shop."
+  name: String!
+
+  "The category's position relative to other categories at the same level of the category hierarchy"
+  position: Int
+
+  "The shop to which this category belongs"
+  shop: Shop!
+
+  "A unique URL-safe string representing this category for links"
+  slug: String
+
+  "A list of the IDs of categories that have this category as their parent in the category hierarchy, in the user-defined order"
+  subCategoryIds: [ID]!
+
+  "The date and time at which this category was last updated"
+  updatedAt: DateTime!
+}
+
+extend type Query {
+  "Returns a category from a provided category ID or slug. Categories with isVisible set to false are excluded by default."
+  category(
+    "Slug or ID of Category"
+    slugOrId: String,
+
+    "Set to true if you want to include categories that have isVisible set to false"
+    shouldIncludeInvisible: Boolean = false
+  ): Category
+}

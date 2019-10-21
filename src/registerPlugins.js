@@ -22,6 +22,7 @@ import registerTaxesPlugin from "./core-services/taxes/index.js";
 import registerAddressPlugin from "./plugins/address/index.js";
 import registerCheckoutPlugin from "./plugins/checkout/index.js";
 import registerDashboardPlugin from "./plugins/dashboard/index.js";
+import registerCategoryPlugin from "./plugins/category/index.js";
 import registerDiscountCodesPlugin from "./plugins/discount-codes/index.js";
 import registerEmailTemplatesPlugin from "./plugins/email-templates/index.js";
 import registerExamplePaymentsPlugin from "./plugins/payments-example/index.js";
@@ -146,6 +147,11 @@ export default async function registerPlugins(app) {
    */
   await registerNavigationPlugin(app); // OPTIONAL
   await registerSitemapGeneratorPlugin(app); // OPTIONAL
+
+  /**
+   * Category
+   */
+  await registerCategoryPlugin(app); // OPTIONAL
 
   /**
    * Miscellaneous

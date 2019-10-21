@@ -1,0 +1,101 @@
+[
+  {
+    "i18n": "en",
+    "ns": "reaction-categories",
+    "translation": {
+      "reaction-categories": {
+        "categoryAddedToProduct": "Category \"{{categoryName}}\" added to product",
+        "categoryRemovedFromProduct": "Category \"{{categoryName}}\" removed from product",
+        "admin": {
+          "categories": {
+            "categories": "Categories",
+            "categoryManagement": "Category Management",
+            "enabled": "Enabled",
+            "disabled": "Disabled",
+            "enable": "Enable",
+            "disable": "Disable",
+            "delete": "Delete",
+            "visible": "Visible",
+            "makeVisible": "Make visible",
+            "makeHidden": "Make hidden",
+            "hidden": "Hidden",
+            "visibleAction": "Make {{count}} category visible to customers",
+            "visibleAction_plural": "Make {{count}} categories visible to customers",
+            "hiddenAction": "Hide {{count}} category from customers",
+            "hiddenAction_plural": "Hide {{count}} categories from customers",
+            "deleteAction": "Delete {{count}} category",
+            "deleteAction_plural": "Delete {{count}} categories",
+            "form": {
+              "name": "Category name",
+              "nameHelpText": "The unique name for the category",
+              "displayTitle": "Display title",
+              "displayTitleAndSlug": "Display title and slug",
+              "displayTitleHelpText": "The category display title for product listing pages.",
+              "displayTitlePlaceholder": "i.e. Women's Shoes",
+              "slug": "Slug",
+              "slugHelpText": "Category slug is automatically converted into a URL-safe slug on save. Defaults to the category name if left blank.",
+              "slugPlaceholder": "womens-shoes",
+              "formTitleNew": "Create a category",
+              "formTitleUpdate": "Edit Category",
+              "heroMediaUrl": "Hero media URL",
+              "heroMediaUrlPlaceholder": "URL",
+              "heroMediaDeleteConfirm": "Remove hero media?",
+              "uploadImage": "Upload an image",
+              "createNew": "Create a category",
+              "cancel": "Cancel",
+              "delete": "Delete",
+              "deleteConfirm": "Delete this category?",
+              "submitNew": "Create Category",
+              "submitUpdate": "Update Category",
+              "saveChanges": "Save changes",
+              "isVisible": "Category is enabled in storefront",
+              "categoryDetails": "Category details",
+              "metadata": "Metadata",
+              "products": "Products",
+              "save": "Save",
+              "categoryListingHero": "Category listing page hero image",
+              "categoryListingHeroHelpText": "Images with an aspect ratio of 16:9 or greater work best.",
+              "categoryMetadata": "Category metadata",
+              "openGraph": "OpenGraph",
+              "keywords": "Keywords",
+              "keywordsPlaceholder": "Keywords",
+              "description": "Description",
+              "descriptionPlaceholder": "Description",
+              "ogTitle": "title [og:title]",
+              "ogTitlePlaceholder": "Title",
+              "ogUrl": "URL [og:url]",
+              "ogUrlPlaceholder": "URL",
+              "ogDescription": "Description [og:description]",
+              "ogDescriptionPlaceholder": "Description",
+              "ogImageUrl": "Image URL [og:image]",
+              "ogImageUrlPlaceholder": "URL",
+              "fbAppId": "Facebook App Id (Optional)",
+              "fbAppIdPlaceholder": "App Id",
+              "ogLocale": "Locale [og:locale]",
+              "ogLocalePlaceholder": "Locale",
+              "id": "ID",
+              "title": "Title",
+              "priority": "Priority"
+            },
+            "headers": {
+              "slug": "Slug",
+              "name": "Category",
+              "displayTitle": "Display Title",
+              "status": "Status"
+            },
+            "tableText": {
+              "noDataMessage": "No results found",
+              "previousText": "Previous",
+              "nextText": "Next",
+              "loadingText": "Loading...",
+              "noDataText": "No results found",
+              "pageText": "Page",
+              "ofText": "of",
+              "rowsText": "rows"
+            }
+          }
+        }
+      }
+    }
+  }
+]

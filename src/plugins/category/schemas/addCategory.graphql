@@ -1,0 +1,46 @@
+"Input for `addCategory` mutation"
+input AddCategoryInput {
+  "An optional string identifying the mutation call, which will be returned in the response payload"
+  clientMutationId: String
+
+  "Title to display to customers"
+  displayTitle: String!
+
+  "Hero media URL"
+  heroMediaUrl: String
+
+  "Whether the category is visible"
+  isVisible: Boolean!
+
+  "Category metafields"
+  metafields: [MetafieldInput]
+
+  "Unique name of the category"
+  name: String!
+
+  "The shop that owns the category"
+  shopId: ID!
+
+  "The category slug. If left blank, the name will be slugified and saved as the slug"
+  slug: String
+}
+
+"Response payload for `addCategory` mutation"
+type AddCategoryPayload {
+  "The same string you sent with the mutation params, for matching mutation calls with their responses"
+  clientMutationId: String
+
+  "The shop that owns the category"
+  shopId: ID!
+
+  "The newly-created category"
+  category: Category!
+}
+
+extend type Mutation {
+  "Adds a new category"
+  addCategory(
+    "Mutation input"
+    input: AddCategoryInput!
+  ): AddCategoryPayload!
+}

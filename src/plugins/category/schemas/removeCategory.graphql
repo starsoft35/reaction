@@ -1,0 +1,28 @@
+"Input for `removeCategory` mutation"
+input RemoveCategoryInput {
+  "An optional string identifying the mutation call, which will be returned in the response payload"
+  clientMutationId: String
+
+  "ID of category to delete"
+  id: ID!
+
+  "The shop that owns the category"
+  shopId: ID!
+}
+
+"Response payload for `removeCategory` mutation"
+type RemoveCategoryPayload {
+  "The same string you sent with the mutation params, for matching mutation calls with their responses"
+  clientMutationId: String
+
+  "The deleted category"
+  category: Category!
+}
+
+extend type Mutation {
+  "Removes an existing category"
+  removeCategory(
+    "Mutation input"
+    input: RemoveCategoryInput!
+  ): RemoveCategoryPayload!
+}

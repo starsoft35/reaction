@@ -1,0 +1,141 @@
+extend type Shop {
+  "Returns a paged list of categories for this shop"
+  categories(
+    "If set, the query will return only top-level categories or only non-top-level categories. By default, both types of categories are returned."
+    isTopLevel: Boolean,
+
+    "Set to true if you want soft deleted categories to be included in the response"
+    shouldIncludeDeleted: Boolean = false,
+
+    "Return only results that come after this cursor. Use this with `first` to specify the number of results to return."
+    after: ConnectionCursor,
+
+    "Return only results that come before this cursor. Use this with `last` to specify the number of results to return."
+    before: ConnectionCursor,
+
+    "Return at most this many results. This parameter may be used with either `after` or `offset` parameters."
+    first: ConnectionLimitInt,
+
+    "Return at most this many results. This parameter may be used with the `before` parameter."
+    last: ConnectionLimitInt,
+
+    "Return results sorted in this order"
+    sortOrder: SortOrder = asc,
+
+    "By default, categories are sorted by position. Set this to sort by one of the other allowed fields"
+    sortBy: CategorySortByField = position
+  ): CategoryConnection
+}
+
+extend type Category {
+  "A paged list of categories that have this category as their parent in the category hierarchy. Currently only three levels are supported."
+  subCategories(
+    "Return only results that come after this cursor. Use this with `first` to specify the number of results to return."
+    after: ConnectionCursor,
+
+    "Return only results that come before this cursor. Use this with `last` to specify the number of results to return."
+    before: ConnectionCursor,
+
+    "Return at most this many results. This parameter may be used with either `after` or `offset` parameters."
+    first: ConnectionLimitInt,
+
+    "Return at most this many results. This parameter may be used with the `before` parameter."
+    last: ConnectionLimitInt,
+
+    "Return results sorted in this order"
+    sortOrder: SortOrder = asc,
+
+    "By default, categories are sorted by position. Set this to sort by one of the other allowed fields"
+    sortBy: CategorySortByField = position
+  ): CategoryConnection
+}
+
+"The fields by which you are allowed to sort any query that returns a `CategoryConnection`"
+enum CategorySortByField {
+  "Category ID"
+  _id
+
+  "Date and time the category was created"
+  createdAt
+
+  "Category name"
+  name
+
+  "Category position"
+  position
+
+  "Date and time the category was last updated"
+  updatedAt
+}
+
+"A connection edge in which each node is a `Category` object"
+type CategoryEdge implements NodeEdge {
+  "The cursor that represents this node in the paginated results"
+  cursor: ConnectionCursor!
+
+  "The category"
+  node: Category
+}
+
+"""
+Wraps a list of `Categories`, providing pagination cursors and information.
+
+For information about what Relay-compatible connections are and how to use them, see the following articles:
+- [Relay Connection Documentation](https://facebook.github.io/relay/docs/en/graphql-server-specification.html#connections)
+- [Relay Connection Specification](https://facebook.github.io/relay/graphql/connections.htm)
+- [Using Relay-style Connections With Apollo Client](https://www.apollographql.com/docs/react/recipes/pagination.html)
+"""
+type CategoryConnection {
+  "The list of nodes that match the query, wrapped in an edge to provide a cursor string for each"
+  edges: [CategoryEdge]
+
+  """
+  You can request the `nodes` directly to avoid the extra wrapping that `NodeEdge` has,
+  if you know you will not need to paginate the results.
+  """
+  nodes: [Category]
+
+  "Information to help a client request the next or previous page"
+  pageInfo: PageInfo!
+
+  "The total number of nodes that match your query"
+  totalCount: Int!
+}
+
+extend type Query {
+  "Returns a paged list of categories for a shop. You must include a shopId when querying."
+  categories(
+    "Only categories associated with this shop will be returned"
+    shopId: ID!,
+
+    "If provided, this query will do a regex search using the provided filter data, and return only categories that match"
+    filter: String
+
+    "If set, the query will return only top-level categories or only non-top-level categories. By default, both types of categories are returned."
+    isTopLevel: Boolean,
+
+    "Set to true if you want soft deleted categories to be included in the response"
+    shouldIncludeDeleted: Boolean = false,
+
+    "Set to true if you want to include categories that have isVisible set to false"
+    shouldIncludeInvisible: Boolean = false,
+
+    "Return only results that come after this cursor. Use this with `first` to specify the number of results to return."
+    after: ConnectionCursor,
+
+    "Return only results that come before this cursor. Use this with `last` to specify the number of results to return."
+    before: ConnectionCursor,
+
+    "Return at most this many results. This parameter may be used with either `after` or `offset` parameters."
+    first: ConnectionLimitInt,
+
+    "Return at most this many results. This parameter may be used with the `before` parameter."
+    last: ConnectionLimitInt,
+
+    "Return results sorted in this order"
+    sortOrder: SortOrder = asc,
+
+    "By default, categories are sorted by position. Set this to sort by one of the other allowed fields"
+    sortBy: CategorySortByField = position
+  ): CategoryConnection
+}

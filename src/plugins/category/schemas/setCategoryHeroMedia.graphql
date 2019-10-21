@@ -1,0 +1,31 @@
+"Input for `setCategoryHeroMedia` mutation"
+input SetCategoryHeroMediaInput {
+  "An optional string identifying the mutation call, which will be returned in the response payload"
+  clientMutationId: String
+
+  "File record document"
+  fileRecord: JSONObject
+
+  "ID of category to add the hero image record to"
+  id: ID!
+
+  "The shop that owns the category"
+  shopId: ID!
+}
+
+"Response payload for `setCategoryHeroMedia` mutation"
+type SetCategoryHeroMediaPayload {
+  "The same string you sent with the mutation params, for matching mutation calls with their responses"
+  clientMutationId: String
+
+  "Category the hero image was added to"
+  category: Category!
+}
+
+extend type Mutation {
+  "Add an image to the category"
+  setCategoryHeroMedia(
+    "Mutation input"
+    input: SetCategoryHeroMediaInput!
+  ): SetCategoryHeroMediaPayload!
+}
