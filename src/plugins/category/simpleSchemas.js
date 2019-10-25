@@ -41,6 +41,32 @@ const Metafield = new SimpleSchema({
 });
 
 /**
+ * @name CategoryProduct
+ * @memberof Schemas
+ * @type {SimpleSchema}
+ * @property {String} _id optional
+ * @property {String} productId required
+ * @property {String} categoryId required
+ * @property {Number} priority optional
+ */
+export const CategoryProduct = new SimpleSchema({
+  _id: {
+    type: String,
+    optional: true
+  },
+  productId: {
+    type: String
+  },
+  categoryId: {
+    type: String
+  },
+  priority: {
+    type: Number,
+    optional: true
+  }
+});
+
+/**
  * @name Category
  * @memberof Schemas
  * @type {SimpleSchema}
