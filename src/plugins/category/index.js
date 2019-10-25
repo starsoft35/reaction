@@ -3,7 +3,7 @@ import mutations from "./mutations/index.js";
 import queries from "./queries/index.js";
 import resolvers from "./resolvers/index.js";
 import schemas from "./schemas/index.js";
-import { Category } from "./simpleSchemas.js";
+import { Category, CategoryProduct } from "./simpleSchemas.js";
 
 /**
  * @summary Import and call this function to add this plugin to your API.
@@ -16,6 +16,12 @@ export default async function register(app) {
     name: "reaction-categories",
     i18n,
     collections: {
+      CategoryProduct: {
+        name: "CategoryProduct",
+        indexes: [
+          [{ productId: 1, categoryId: 1 }, { name: "c2_category_product" }]
+        ]
+      },
       Categories: {
         name: "Categories",
         indexes: [
@@ -36,7 +42,8 @@ export default async function register(app) {
     mutations,
     queries,
     simpleSchemas: {
-      Category
+      Category,
+      CategoryProduct
     },
     registry: [{
       label: "Categories",
