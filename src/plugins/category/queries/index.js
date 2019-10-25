@@ -1,9 +1,9 @@
 import categories from "./categories.js";
 import category from "./category.js";
-import productsByCategoryId from "./productsByCategoryId.js";
+import productsByCategoryIds from "./productsByCategoryIds.js";
 
 export default {
   categories,
   category,
-  productsByCategoryId
+  productsByCategoryIds
 };
