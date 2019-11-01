@@ -621,6 +621,7 @@ export default function createJobClass() {
       let cb = rest[adjustedLength - 1];
 
       [options, cb] = Array.from(optionsHelp(options, cb));
+      if (typeof options.timeout !== "number") { options.timeout = 60 * 1000; }
       return methodCall(root, "shutdownJobServer", [options], cb);
     }
 
