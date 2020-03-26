@@ -4,6 +4,7 @@ import registerDiscountCodesPlugin from "@reactioncommerce/plugin-discount-codes
 import registerExamplePaymentsPlugin from "@reactioncommerce/plugin-payments-example";
 import registerNavigationPlugin from "@reactioncommerce/plugin-navigation";
 import registerSimpleAuthorizationPlugin from "@reactioncommerce/plugin-simple-authorization";
+import registerSurchargesPlugin from "@reactioncommerce/plugin-surcharges";
 import registerSystemInformationPlugin from "@reactioncommerce/plugin-system-information";
 
 /* node-app imports */
@@ -36,7 +37,6 @@ import registerSimpleSchemaPlugin from "./plugins/simple-schema/index.js";
 import registerSitemapGeneratorPlugin from "./plugins/sitemap-generator/index.js";
 import registerSMTPEmailPlugin from "./plugins/email-smtp/index.js";
 import registerStripePaymentsPlugin from "./plugins/payments-stripe/index.js";
-import registerSurchargesPlugin from "./plugins/surcharges/index.js";
 import registerTaxesRatesPlugin from "./plugins/taxes-rates/index.js";
 import registerTestAddressValidationPlugin from "./plugins/address-validation-test/index.js";
 import registerTranslationsPlugin from "./plugins/translations/index.js";
